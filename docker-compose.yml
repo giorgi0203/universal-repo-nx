@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  universalreponx:
+    image: universalreponx
+    volumes:
+      - ./:/usr/src/app
+    build:
+      context: .
+      dockerfile: ./Dockerfile

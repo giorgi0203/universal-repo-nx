@@ -25,6 +25,13 @@
     "portfolio-e2e": {
       "tags": [],
       "implicitDependencies": ["portfolio"]
+    },
+    "game": {
+      "tags": []
+    },
+    "game-e2e": {
+      "tags": [],
+      "implicitDependencies": ["game"]
     }
   }
 }

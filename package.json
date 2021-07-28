@@ -5,8 +5,10 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
+    "typedoc": "typedoc --mode modules -module commonjs --exclude **/*.spec.ts --out docs/typedoc apps/portfolio",
+    "compodoc": "npx compodoc -p apps/portfolio/tsconfig.doc.json",
     "nx": "nx",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
@@ -38,6 +40,7 @@
     "@angular/platform-browser-dynamic": "^12.0.0",
     "@angular/router": "^12.0.0",
     "@nrwl/angular": "12.3.6",
+    "pixi.js": "^6.0.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
@@ -50,6 +53,7 @@
     "@angular/cli": "^12.0.0",
     "@angular/compiler-cli": "^12.0.0",
     "@angular/language-service": "^12.0.0",
+    "@compodoc/compodoc": "^1.1.11",
     "@nrwl/cli": "12.3.6",
     "@nrwl/cypress": "12.3.6",
     "@nrwl/eslint-plugin-nx": "12.3.6",
@@ -71,6 +75,7 @@
     "prettier": "2.2.1",
     "ts-jest": "26.5.5",
     "ts-node": "~9.1.1",
+    "typedoc": "^0.21.2",
     "typescript": "~4.2.4"
   }
 }
