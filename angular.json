@@ -267,6 +267,31 @@
           }
         }
       }
+    },
+    "osa": {
+      "projectType": "library",
+      "root": "libs/osa",
+      "sourceRoot": "libs/osa/src",
+      "prefix": "universal-repo-nx",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/osa"],
+          "options": {
+            "jestConfig": "libs/osa/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/osa/src/**/*.ts",
+              "libs/osa/src/**/*.html"
+            ]
+          }
+        }
+      }
     }
   }
 }

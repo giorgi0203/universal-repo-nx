@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  universalreponx:
-    image: universalreponx
-    build:
-      context: .
-      dockerfile: ./Dockerfile

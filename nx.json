@@ -32,6 +32,9 @@
     "game-e2e": {
       "tags": [],
       "implicitDependencies": ["game"]
+    },
+    "osa": {
+      "tags": []
     }
   }
 }
