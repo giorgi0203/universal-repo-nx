@@ -7,9 +7,18 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class OsaDemoComponent implements OnInit {
 
+  items: {
+    id: number
+  }[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
+    for (let i = 0; i < 100; i++) {
+      this.items.push({
+        id: Math.random(),
+      })
+    }
   }
 
 }

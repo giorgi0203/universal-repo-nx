@@ -408,6 +408,47 @@
           }
         }
       }
+    },
+    "inputs": {
+      "projectType": "library",
+      "root": "libs/inputs",
+      "sourceRoot": "libs/inputs/src",
+      "prefix": "universal-repo-nx",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "outputs": ["dist/libs/inputs"],
+          "options": {
+            "project": "libs/inputs/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/inputs/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/inputs/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/inputs"],
+          "options": {
+            "jestConfig": "libs/inputs/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/inputs/src/**/*.ts",
+              "libs/inputs/src/**/*.html"
+            ]
+          }
+        }
+      }
     }
   }
 }

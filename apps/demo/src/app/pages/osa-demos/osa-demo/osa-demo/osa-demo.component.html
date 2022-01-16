@@ -1,7 +1,12 @@
-<div class="flex flex-col bg-gray-600 p-10" osa>
+<div
+  class="grid grid-cols-4 gap-12 bg-gray-600 p-10"
+  osa
+  [animationType]="'transform'"
+  [animationDir]="'bottom'"
+>
   <div
     *ngFor="let item of items"
-    class="w-full h-96 bg-gray-700 my-5 shadow-xl"
+    class="w-auto h-96 bg-gray-700 my-5 shadow-xl"
     osa-item
   >
     {{ item.id }}

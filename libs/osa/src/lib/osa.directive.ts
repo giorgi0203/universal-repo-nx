@@ -1,4 +1,5 @@
-import { AfterContentInit, ContentChildren, Directive, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
+import { AfterContentInit, ContentChildren, Directive, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { OsaItemDirective } from './osa-item.directive';
 
 @Directive({
@@ -6,47 +7,62 @@ import { OsaItemDirective } from './osa-item.directive';
 })
 export class OsaDirective implements OnInit, AfterContentInit {
 
+  @Input() animationType: 'transform' | 'fade' = 'transform';
+  @Input() animationDir: 'left' | 'right' | 'top' | 'bottom' | 'random' = 'left';
+
   elementsList = [];
+  players: WeakMap<HTMLElement, AnimationPlayer> = new WeakMap();
 
   osaContainer: HTMLElement | undefined;
 
   @ContentChildren(OsaItemDirective) elements: QueryList<OsaItemDirective> | undefined;
 
   constructor(
-    public _el: ElementRef
+    public _el: ElementRef,
+    private _builder: AnimationBuilder
   ) {
-    console.log('osa constructor');
 
   }
 
   ngOnInit(): void {
-
     this.osaContainer = this._el.nativeElement;
-    console.log('osa ngOnInit', this.osaContainer?.querySelectorAll('[osa-item]'));
+  }
+
+  makeAnimation(element: HTMLElement) {
+    // first define a reusable animation
+    const rndtime = (Math.random() + .1) * 200;
+    const myAnimation = this._builder.build([
+      style({ opacity: '0' }),
+      animate(rndtime, style({ opacity: '1' }))
+    ]);
+    // const myAnimation = this._builder.build([
+    //   style({ transform: 'translateY(100%)', opacity: '0' }),
+    //   animate(rndtime, style({ transform: 'translateY(0)', opacity: '1' }))
+    // ]);
+
+    this.players.set(element, myAnimation.create(element));
 
   }
 
   ngAfterContentInit(): void {
-    console.log('osa ngOnInit', this.elements?.first._el);
-    // hide elements by adding class?
-
-    //
     if (!!window.IntersectionObserver) {
       let observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
           const htmlElement = entry.target as HTMLElement;
-          if (entry.isIntersecting) {
-            console.log(entry);
-            htmlElement.style.transform = 'translateX(0)';
-            // observer.unobserve(entry.target);
-          } else {
+          let player: AnimationPlayer | undefined = this.players.get(htmlElement);
 
-            htmlElement.style.transform = 'translateX(-100%)';
-            htmlElement.style.transition = 'all 2s';
+          if (entry.isIntersecting) {
+
+            player?.play();
+
+            // observer.unobserve(entry.target);
           }
         });
-      }, { rootMargin: "0px 0px -20px 0px" });
-      this.elements?.forEach(element => { observer.observe(element._el.nativeElement) });
+      }, { rootMargin: "0px 0px 20px 0px" });
+      this.elements?.forEach(element => {
+        this.makeAnimation(element._el.nativeElement);
+        observer.observe(element._el.nativeElement)
+      });
     }
   }
 

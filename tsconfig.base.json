@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@universal-repo-nx/osa": ["libs/osa/src/index.ts"]
+      "@universal-repo-nx/osa": ["libs/osa/src/index.ts"],
+      "universal-inputs": ["libs/inputs/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

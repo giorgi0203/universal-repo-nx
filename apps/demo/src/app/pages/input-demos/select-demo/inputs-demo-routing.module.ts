@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OsaDemoComponent } from './osa-demo/osa-demo.component';
+import { SelectDemoComponent } from './select-demo/select-demo.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: OsaDemoComponent
+    component: SelectDemoComponent
   }
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class OsaDemoRoutingModule { }
+export class InputsDemoRoutingModule { }
