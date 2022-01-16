@@ -35,6 +35,13 @@
     },
     "osa": {
       "tags": []
+    },
+    "demo": {
+      "tags": []
+    },
+    "demo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["demo"]
     }
   }
 }

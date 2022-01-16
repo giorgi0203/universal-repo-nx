@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/portfolio',
     '<rootDir>/apps/game',
     '<rootDir>/libs/osa',
+    '<rootDir>/apps/demo',
   ],
 };
