@@ -41,7 +41,7 @@ export class OsaDirective implements OnInit, AfterContentInit {
 
   makeAnimation(element: HTMLElement) {
     // first define a reusable animation
-    const rndtime = (Math.random() + 0.1) * 200;
+    const rndtime = (Math.random() + 0.1) * 500;
     const myAnimation = this._builder.build([
       style({ opacity: '0' }),
       animate(rndtime, style({ opacity: '1' })),

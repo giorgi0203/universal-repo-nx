@@ -1,20 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { ArticlesQuery } from './infrastructure/entities/Article.model';
+import { PagingInfoCommand, PagingInfoQuery } from './infrastructure/entities/PagingInfo.model';
 
-export interface IPagingInfoQuery {
-  perPage: number;
-  currentPage: number;
-}
-export interface IPagingInfo {
-  totalCount: number;
-  perPage: number;
-  isLastPage: number;
-  pagesCount: number;
-  currentPage: number;
-}
-export interface IData {
-  data: any[];
-  pagingInfo: IPagingInfo;
-}
 @Injectable()
 export class AppService {
   data: any[] = [
@@ -28,6 +15,16 @@ export class AppService {
     { id: 1 },
     { id: 1 },
     { id: 1 },
+    { id: 2 },
+    { id: 2 },
+    { id: 2 },
+    { id: 2 },
+    { id: 2 },
+    { id: 2 },
+    { id: 2 },
+    { id: 2 },
+    { id: 2 },
+    { id: 2 },
     { id: 1 },
     { id: 1 },
     { id: 1 },
@@ -68,41 +65,36 @@ export class AppService {
     { id: 1 },
     { id: 1 },
     { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
-    { id: 1 },
+    { id: 7 },
+    { id: 7 },
+    { id: 7 },
+    { id: 7 },
+    { id: 7 },
+    { id: 7 },
+    { id: 7 },
+    { id: 7 },
+    { id: 7 },
+    { id: 7 },
+    { id: 8 },
+    { id: 8 },
+    { id: 8 },
+    { id: 8 },
+    { id: 8 },
   ];
 
-  getData(query: IPagingInfoQuery): IData {
+  getArticles(query: PagingInfoCommand): ArticlesQuery {
     let totalCount = this.data.length;
-    let perPage = 0;
-    let isLastPage = 0;
-    let pagesCount = 0;
-    let currentPage = 0;
-    return {
-      data: this.data,
+    let perPage = query.perPage;
+    let pagesCount = Math.round(this.data.length / perPage);
+    let currentPage = query.currentPage;
+    let isLastPage = query.currentPage == pagesCount;
+
+
+    const startingIndex = (currentPage - 1) * perPage;// 0 10 20 30
+    const endingIndex = currentPage * perPage;// 10 20 30
+
+    return new ArticlesQuery({
+      data: this.data.slice(startingIndex, endingIndex),
       pagingInfo: {
         totalCount,
         perPage,
@@ -110,6 +102,6 @@ export class AppService {
         pagesCount,
         currentPage,
       },
-    };
+    })
   }
 }
