@@ -79,7 +79,8 @@
               "apps/demo/src/**/*.ts",
               "apps/demo/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -89,7 +90,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "demo-e2e": {
       "root": "apps/demo-e2e",
@@ -113,9 +115,12 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/demo-e2e/**/*.{js,ts}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["demo"]
     },
     "game": {
       "projectType": "application",
@@ -195,7 +200,8 @@
               "apps/game/src/**/*.ts",
               "apps/game/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -205,7 +211,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "game-e2e": {
       "root": "apps/game-e2e",
@@ -229,9 +236,12 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/game-e2e/**/*.{js,ts}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["game"]
     },
     "inputs": {
       "projectType": "library",
@@ -270,9 +280,11 @@
               "libs/inputs/src/**/*.ts",
               "libs/inputs/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "tags": []
     },
     "osa": {
       "projectType": "library",
@@ -295,9 +307,11 @@
               "libs/osa/src/**/*.ts",
               "libs/osa/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "tags": []
     },
     "portfolio": {
       "projectType": "application",
@@ -380,7 +394,8 @@
               "apps/portfolio/src/**/*.ts",
               "apps/portfolio/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -390,7 +405,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "portfolio-e2e": {
       "root": "apps/portfolio-e2e",
@@ -414,9 +430,12 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/portfolio-e2e/**/*.{js,ts}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["portfolio"]
     },
     "universal-back": {
       "root": "apps/universal-back",

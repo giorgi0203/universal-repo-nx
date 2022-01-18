@@ -12,8 +12,8 @@ export interface IPagingInfo {
   currentPage: number;
 }
 export interface IData {
-  data: any[],
-  pagingInfo: IPagingInfo,
+  data: any[];
+  pagingInfo: IPagingInfo;
 }
 @Injectable()
 export class AppService {
@@ -93,22 +93,23 @@ export class AppService {
     { id: 1 },
     { id: 1 },
     { id: 1 },
-  ]
+  ];
 
-  getData(query:IPagingInfoQuery): IData {
+  getData(query: IPagingInfoQuery): IData {
     let totalCount = this.data.length;
     let perPage = 0;
     let isLastPage = 0;
     let pagesCount = 0;
     let currentPage = 0;
     return {
-      data: this.data, pagingInfo: {
+      data: this.data,
+      pagingInfo: {
         totalCount,
         perPage,
         isLastPage,
         pagesCount,
         currentPage,
-      }
+      },
     };
   }
 }

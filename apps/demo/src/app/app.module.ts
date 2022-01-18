@@ -10,16 +10,25 @@ import { OsaModule } from '@universal-repo-nx/osa';
   imports: [
     OsaModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot([
-      {
-        path:'osa',
-        loadChildren:() => import('./pages/osa-demos/osa-demo/osa-demo.module').then(m => m.OsaDemoModule),
-      },
-      {
-        path:'inputs',
-        loadChildren:() => import('./pages/input-demos/select-demo/inputs-demo.module').then(m => m.SelectDemoModule),
-      },
-    ], { initialNavigation: 'enabled' }),
+    RouterModule.forRoot(
+      [
+        {
+          path: 'osa',
+          loadChildren: () =>
+            import('./pages/osa-demos/osa-demo/osa-demo.module').then(
+              (m) => m.OsaDemoModule
+            ),
+        },
+        {
+          path: 'inputs',
+          loadChildren: () =>
+            import('./pages/input-demos/select-demo/inputs-demo.module').then(
+              (m) => m.SelectDemoModule
+            ),
+        },
+      ],
+      { initialNavigation: 'enabled' }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],

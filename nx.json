@@ -14,40 +14,9 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "parallel": 1
       }
-    }
-  },
-  "projects": {
-    "portfolio": {
-      "tags": []
-    },
-    "portfolio-e2e": {
-      "tags": [],
-      "implicitDependencies": ["portfolio"]
-    },
-    "game": {
-      "tags": []
-    },
-    "game-e2e": {
-      "tags": [],
-      "implicitDependencies": ["game"]
-    },
-    "osa": {
-      "tags": []
-    },
-    "demo": {
-      "tags": []
-    },
-    "universal-back": {
-      "tags": []
-    },
-    "demo-e2e": {
-      "tags": [],
-      "implicitDependencies": ["demo"]
-    },
-    "inputs": {
-      "tags": []
     }
   },
   "cli": {
@@ -81,5 +50,13 @@
       "style": "scss"
     }
   },
-  "defaultProject": "portfolio"
+  "defaultProject": "portfolio",
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  }
 }

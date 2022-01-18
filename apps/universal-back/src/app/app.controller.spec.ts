@@ -16,7 +16,6 @@ describe('AppController', () => {
   describe('getData', () => {
     it('should return "Welcome to universal-back!"', () => {
       const appController = app.get<AppController>(AppController);
-     
     });
   });
 });

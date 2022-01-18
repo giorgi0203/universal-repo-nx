@@ -6,10 +6,7 @@ import { OsaItemDirective } from './osa-item.directive';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [
-    OsaDirective,
-    OsaItemDirective
-  ],
-  exports: [OsaDirective, OsaItemDirective]
+  declarations: [OsaDirective, OsaItemDirective],
+  exports: [OsaDirective, OsaItemDirective],
 })
-export class OsaModule { }
+export class OsaModule {}
