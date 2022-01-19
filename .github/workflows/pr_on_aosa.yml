@@ -1,11 +1,11 @@
 # File for Pull Request on master branch
-name: PR on master
+name: PR on aosa
 
 # When a PR is opened to master
 on:
   pull_request:
     branches:
-      - master
+      - aosa-main
     types: [opened, reopened, synchronize]
 
 jobs:
