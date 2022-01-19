@@ -3,13 +3,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { OsaModule } from '@universal-repo-nx/osa';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    OsaModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule.forRoot(
       [
         {
@@ -33,4 +33,4 @@ import { OsaModule } from '@universal-repo-nx/osa';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

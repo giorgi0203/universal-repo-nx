@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { OsaDemoRoutingModule } from './osa-demo-routing.module';
 import { OsaDemoComponent } from './osa-demo/osa-demo.component';
-import { OsaModule } from '@universal-repo-nx/osa';
+import { AosaModule } from 'aosa';
+
 
 
 @NgModule({
@@ -12,7 +13,7 @@ import { OsaModule } from '@universal-repo-nx/osa';
   ],
   imports: [
     CommonModule,
-    OsaModule,
+    AosaModule,
     OsaDemoRoutingModule
   ]
 })

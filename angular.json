@@ -1,6 +1,48 @@
 {
   "version": 1,
   "projects": {
+    "aosa": {
+      "projectType": "library",
+      "root": "libs/aosa",
+      "sourceRoot": "libs/aosa/src",
+      "prefix": "universal-repo-nx",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "outputs": ["dist/libs/aosa"],
+          "options": {
+            "project": "libs/aosa/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/aosa/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/aosa/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/aosa"],
+          "options": {
+            "jestConfig": "libs/aosa/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/aosa/src/**/*.ts",
+              "libs/aosa/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "demo": {
       "projectType": "application",
       "root": "apps/demo",
@@ -286,33 +328,6 @@
       },
       "tags": []
     },
-    "osa": {
-      "projectType": "library",
-      "root": "libs/osa",
-      "sourceRoot": "libs/osa/src",
-      "prefix": "universal-repo-nx",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/osa"],
-          "options": {
-            "jestConfig": "libs/osa/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/osa/src/**/*.ts",
-              "libs/osa/src/**/*.html"
-            ]
-          },
-          "outputs": ["{options.outputFile}"]
-        }
-      },
-      "tags": []
-    },
     "portfolio": {
       "projectType": "application",
       "root": "apps/portfolio",
@@ -436,6 +451,29 @@
       },
       "tags": [],
       "implicitDependencies": ["portfolio"]
+    },
+    "shared-models": {
+      "root": "libs/shared-models",
+      "sourceRoot": "libs/shared-models/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/shared-models/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared-models"],
+          "options": {
+            "jestConfig": "libs/shared-models/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
     },
     "universal-back": {
       "root": "apps/universal-back",

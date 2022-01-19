@@ -1,13 +1,15 @@
 <div
   class="grid grid-cols-4 gap-12 bg-gray-600 p-10"
-  osa
+  aosa
   [animationType]="'transform'"
   [animationDir]="'bottom'"
+  [trackArray]="articles$ | async"
+  (lastScroll)="onLastScroll($event)"
 >
   <div
-    *ngFor="let item of items"
+    *ngFor="let item of articles$ | async"
     class="w-auto h-96 bg-gray-700 my-5 shadow-xl"
-    osa-item
+    aosa-item
   >
     {{ item.id }}
   </div>

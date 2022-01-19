@@ -1,8 +1,7 @@
 import { ClassSerializerInterceptor, Controller, Get, Query, UseInterceptors, UsePipes, ValidationPipe } from '@nestjs/common';
+import { PagingInfoCommand, ArticlesQuery } from '@universal-repo-nx/shared-models';
 
 import { AppService } from './app.service';
-import { ArticlesQuery } from './infrastructure/entities/Article.model';
-import { PagingInfoCommand, PagingInfoQuery } from './infrastructure/entities/PagingInfo.model';
 
 @Controller()
 export class AppController {
@@ -11,6 +10,8 @@ export class AppController {
   @UseInterceptors(ClassSerializerInterceptor)
   @Get()
   getData(@Query() query: PagingInfoCommand): ArticlesQuery {
+    console.log(query);
+    
     return this.appService.getArticles(query);
   }
 }

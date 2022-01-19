@@ -9,34 +9,52 @@ import {
   ContentChildren,
   Directive,
   ElementRef,
+  EventEmitter,
   Input,
+  OnChanges,
   OnInit,
+  Output,
   QueryList,
+  SimpleChanges,
   ViewChildren,
 } from '@angular/core';
-import { OsaItemDirective } from './osa-item.directive';
+import { finalize, map, scan, shareReplay, tap } from 'rxjs/operators';
+import { AosaItemDirective } from './aosa-item.directive';
 
 @Directive({
-  selector: '[osa],[osa-container]',
+  selector: '[aosa],[aosa-container]',
 })
-export class OsaDirective implements OnInit, AfterContentInit {
+export class AosaDirective implements OnInit, AfterContentInit, OnChanges {
   @Input() animationType: 'transform' | 'fade' = 'transform';
   @Input() animationDir: 'left' | 'right' | 'top' | 'bottom' | 'random' =
     'left';
+  @Input() trackArray: any[] | undefined | null;
 
+  @Output() lastScroll = new EventEmitter();
   elementsList = [];
   players: WeakMap<HTMLElement, AnimationPlayer> = new WeakMap();
 
   osaContainer: HTMLElement | undefined;
 
-  @ContentChildren(OsaItemDirective) elements:
-    | QueryList<OsaItemDirective>
+  @ContentChildren(AosaItemDirective) elements:
+    | QueryList<AosaItemDirective>
     | undefined;
 
-  constructor(public _el: ElementRef, private _builder: AnimationBuilder) {}
+  last: ElementRef | undefined;
+
+  constructor(public _el: ElementRef, private _builder: AnimationBuilder) { }
 
   ngOnInit(): void {
     this.osaContainer = this._el.nativeElement;
+    // this.lastScroll.emit();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes?.['trackArray']?.currentValue) {
+      // console.log(changes.trackArray);
+      // this.setupObservables()
+    }
+
   }
 
   makeAnimation(element: HTMLElement) {
@@ -55,7 +73,41 @@ export class OsaDirective implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit(): void {
+    this.elements?.changes.pipe(tap((elems: QueryList<AosaItemDirective>) => {
+      console.log(elems);
+
+      if (elems.last) {
+        this.last = elems.last._el.nativeElement
+        this.observeLastElement(elems.last._el.nativeElement);
+      }
+      this.setupAnimationObservables();
+    })).subscribe()
+    // this.setupObservables();
+  }
+
+  observeLastElement(element: HTMLElement) {
     if (!!window.IntersectionObserver) {
+
+      let observer = new IntersectionObserver(
+        (entries, observer) => {
+          const entry = entries[0]
+          if (entry.isIntersecting) {
+            console.log('fetch data', entry.target);
+            this.lastScroll.emit();
+            observer.unobserve(entry.target);
+          }
+        },
+        { rootMargin: '0px 0px 0px 0px', threshold: 1 }
+      );
+
+      observer.observe(element);
+
+    }
+  }
+
+  setupAnimationObservables() {
+    if (!!window.IntersectionObserver) {
+
       let observer = new IntersectionObserver(
         (entries, observer) => {
           entries.forEach((entry) => {
@@ -69,6 +121,7 @@ export class OsaDirective implements OnInit, AfterContentInit {
               // observer.unobserve(entry.target);
             }
           });
+
         },
         { rootMargin: '0px 0px 20px 0px' }
       );

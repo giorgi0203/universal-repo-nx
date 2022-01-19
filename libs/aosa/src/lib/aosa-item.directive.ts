@@ -1,9 +1,9 @@
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[osa-item]'
+  selector: '[aosa-item]'
 })
-export class OsaItemDirective {
+export class AosaItemDirective {
 
   constructor(
     public _el: ElementRef
