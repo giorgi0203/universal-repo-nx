@@ -43,6 +43,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm i
       - run: npm run nx build aosa
-      - run: npm publish
+      - name: set working directory and publish
+        working-directory: ./dist/libs/aosa
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
