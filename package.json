@@ -30,6 +30,10 @@
     "help": "nx help"
   },
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giorgi0203/universal-repo-nx.git"
+  },
   "dependencies": {
     "@angular/animations": "13.1.2",
     "@angular/common": "13.1.2",
