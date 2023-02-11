@@ -1,6 +1,7 @@
 import {
   animate,
   AnimationBuilder,
+  AnimationFactory,
   AnimationPlayer,
   style,
 } from '@angular/animations';
@@ -19,6 +20,7 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { finalize, map, scan, shareReplay, tap } from 'rxjs/operators';
+import { fade } from './animations/fade.animation';
 import { AosaItemDirective } from './aosa-item.directive';
 
 @Directive({
@@ -60,14 +62,15 @@ export class AosaDirective implements OnInit, AfterContentInit, OnChanges {
   makeAnimation(element: HTMLElement) {
     // first define a reusable animation
     const rndtime = (Math.random() + 0.1) * 500;
-    const myAnimation = this._builder.build([
-      style({ opacity: '0' }),
-      animate(rndtime, style({ opacity: '1' })),
-    ]);
-    // const myAnimation = this._builder.build([
-    //   style({ transform: 'translateY(100%)', opacity: '0' }),
-    //   animate(rndtime, style({ transform: 'translateY(0)', opacity: '1' }))
-    // ]);
+    let myAnimation: AnimationFactory = this._builder.build(fade(rndtime));
+    if (this.animationType === 'fade') {
+      myAnimation = this._builder.build(fade(rndtime));
+    } else if (this.animationType === 'transform') {
+      myAnimation = this._builder.build([
+        style({ transform: 'translateY(100%)', opacity: '0' }),
+        animate(rndtime, style({ transform: 'translateY(0)', opacity: '1' }))
+      ]);
+    }
 
     this.players.set(element, myAnimation.create(element));
   }

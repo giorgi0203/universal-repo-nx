@@ -1,53 +1,8 @@
-/*
- * Remove template code below
- */
+
 :host {
   display: flex;
   // justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  main {
-    display: flex;
-    flex-direction: column;
-
-    .block {
-      height: 100vh;
-      width: 100%;
-      padding: 10px;
-
-      div {
-        width: 500px;
-        height: 500px;
-        background-color: gray;
-
-        transition: opacity 500ms;
-
-        &.fade-in-bottom.scrolled {
-          animation: fade-in-bottom 1s ease-in-out both;
-        }
-      }
-    }
-  }
-}
-
-.show {
-  opacity: 1;
-}
-
-.hide {
-  opacity: 0;
-}
-
-@keyframes fade-in-bottom {
-  0% {
-    -webkit-transform: translateY(50px);
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-    opacity: 1;
-  }
 }
