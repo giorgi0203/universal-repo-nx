@@ -1,4 +1,7 @@
 {
+  "cli": {
+    "analytics": "331ab45f-0e86-4cee-b194-a95a9431f963"
+  },
   "version": 1,
   "projects": {
     "aosa": {

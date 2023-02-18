@@ -254,11 +254,11 @@ export class AppService {
   ];
 
   getArticles(query: PagingInfoCommand): ArticlesQuery {
-    let totalCount = this.data.length;
-    let perPage = query.perPage;
-    let pagesCount = Math.round(this.data.length / perPage);
-    let currentPage = query.currentPage;
-    let isLastPage = query.currentPage == pagesCount;
+    const totalCount = this.data.length;
+    const perPage = query.perPage;
+    const pagesCount = Math.round(this.data.length / perPage);
+    const currentPage = query.currentPage;
+    const isLastPage = query.currentPage == pagesCount;
 
 
     const startingIndex = (currentPage - 1) * perPage;// 0 10 20 30
