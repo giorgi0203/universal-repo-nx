@@ -27,10 +27,10 @@ import { HttpClientModule } from '@angular/common/http';
             ),
         },
       ],
-      { initialNavigation: 'enabled' }
+      { initialNavigation: 'enabledBlocking' }
     ),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

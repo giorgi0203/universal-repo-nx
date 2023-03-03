@@ -1,0 +1,40 @@
+{
+  "name": "aosa",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/aosa/src",
+  "prefix": "universal-repo-nx",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["{workspaceRoot}/dist/libs/aosa"],
+      "options": {
+        "project": "libs/aosa/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/aosa/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/aosa/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/aosa"],
+      "options": {
+        "jestConfig": "libs/aosa/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/aosa/src/**/*.ts", "libs/aosa/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

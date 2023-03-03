@@ -1,0 +1,44 @@
+{
+  "name": "inputs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/inputs/src",
+  "prefix": "universal-repo-nx",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["{workspaceRoot}/dist/libs/inputs"],
+      "options": {
+        "project": "libs/inputs/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/inputs/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/inputs/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/inputs"],
+      "options": {
+        "jestConfig": "libs/inputs/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/inputs/src/**/*.ts",
+          "libs/inputs/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": []
+}
