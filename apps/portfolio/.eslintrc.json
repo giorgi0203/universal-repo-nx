@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "universal-repo-nx",
+            "prefix": "portfolio",
             "style": "kebab-case"
           }
         ]
