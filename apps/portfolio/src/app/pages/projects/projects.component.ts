@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './projects.component.html'
 })
 export class ProjectsComponent implements OnInit {
+  
 
   constructor() {
     console.log('ProjectsComponent constructor');
