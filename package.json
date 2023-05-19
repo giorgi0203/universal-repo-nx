@@ -7,6 +7,7 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "typedoc": "typedoc --mode modules -module commonjs --exclude **/*.spec.ts --out docs/typedoc apps/portfolio",
     "compodoc": "npx compodoc -p apps/portfolio/tsconfig.doc.json",
+    "seed:universal-back": "node ./apps/universal-back/src/db/seed-universalDB.js",
     "nx": "nx",
     "start": "ng serve --host 0.0.0.0",
     "nx:serve:portfolio": "nx run portfolio:serve",
@@ -49,6 +50,7 @@
     "@nrwl/angular": "15.8.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "mongo-seeding": "^3.7.2",
     "mongoose": "^7.0.0",
     "pixi.js": "^7.1.4",
     "reflect-metadata": "^0.1.13",
@@ -68,6 +70,7 @@
     "@angular/compiler-cli": "15.2.1",
     "@angular/language-service": "15.2.1",
     "@compodoc/compodoc": "^1.1.19",
+    "@faker-js/faker": "^7.6.0",
     "@nestjs/schematics": "9.0.4",
     "@nestjs/testing": "9.3.9",
     "@ngneat/tailwind": "^7.0.3",
@@ -105,7 +108,7 @@
     "prettier": "2.8.4",
     "tailwindcss": "3.2.7",
     "ts-jest": "29.0.5",
-    "ts-node": "10.9.1",
+    "ts-node": "^10.9.1",
     "typedoc": "^0.23.26",
     "typescript": "~4.9.5"
   }

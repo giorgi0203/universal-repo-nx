@@ -9,3 +9,13 @@ docker pull mongo
 ```
 docker run --name my-mongo -d -p 27017:27017 mongo
 ```
+
+### if you want starter data run:
+```
+npx md-seed run
+```
+
+### clear db:
+```
+npx md-seed run --dropdb
+```

@@ -19,4 +19,11 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('portfolio');
   });
+
+  it(`should fetch projects and set errorFetchingProjects false if data is null`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.getProjects();
+    expect(app.errorFetchingProjects).toBe(true);
+  });
 });
