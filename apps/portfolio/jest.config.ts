@@ -10,8 +10,9 @@ export default {
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
+  transformIgnorePatterns: ['node_modules/(?!.*.mjs$)'],
   transform: {
-    '^.+\\.(ts|js|html)$': [
+    '^.+\\.(ts|js|mjs|html)$': [
       'jest-preset-angular',
       {
         tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -19,4 +20,5 @@ export default {
       },
     ],
   },
+ 
 };

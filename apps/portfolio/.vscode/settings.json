@@ -1,0 +1,4 @@
+{
+    "jest.jestCommandLine": "nx run portfolio:test --",
+    "jest.rootPath": "./"
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ProjectsService } from './services/projects.service';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'portfolio-root',
